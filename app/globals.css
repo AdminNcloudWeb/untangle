@@ -1,21 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f1e7;
+  --foreground: #22343a;
+  --card: #fffcf6;
+  --edge: #e4dac7;
+  --muted: #6d7d75;
+  --pine: #0e6f66;
+  --pine-deep: #0a544d;
+  --coral: #d4552f;
+  --coral-deep: #b8431f;
+  --gold: #a8720a;
+  --tint: #ecf1e9;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-edge: var(--edge);
+  --color-muted: var(--muted);
+  --color-pine: var(--pine);
+  --color-pine-deep: var(--pine-deep);
+  --color-coral: var(--coral);
+  --color-coral-deep: var(--coral-deep);
+  --color-gold: var(--gold);
+  --color-tint: var(--tint);
   --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-fraunces);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #101c1a;
+    --foreground: #ece6d9;
+    --card: #172623;
+    --edge: #2b3d39;
+    --muted: #94a69f;
+    --pine: #34b3a2;
+    --pine-deep: #2c9788;
+    --coral: #e0663f;
+    --coral-deep: #ef7d58;
+    --gold: #d9a441;
+    --tint: #1c2e2a;
   }
 }
 
@@ -23,4 +51,19 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--pine) 25%, transparent);
+}
+
+@keyframes thread-dash {
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
+.thread-anim {
+  stroke-dasharray: 5 9;
+  animation: thread-dash 0.9s linear infinite;
 }
