@@ -9,6 +9,12 @@ Running log. Newest entry at the top. Claude should append here as it goes.
 
 ## Log
 
+### 2026-07-15 (redesign session)
+- Redesigned the UI away from the plain neutral look: warm cream/paper background, deep-pine and terracotta accent palette (with dark-mode variants), Fraunces serif for display type, soft decorative glows behind the hero.
+- New hero header with title and explanation ("Fourteen replies deep and nobody knows what's going on."), tone-picker cards with hints, avatar chips for participants, icon lists for decided/open, warm card shadows.
+- Logo: SVG "thread unwinding into a straight line" mark on a pine rounded square — used in the header, as the favicon (`app/icon.svg`), and as an animated loading indicator (dash-offset animation).
+- Verified visually with headless Chromium (light + dark, full untangle flow driven via Playwright CDP; zero console errors). Deployed to production and pushed.
+
 ### 2026-07-15 (build session)
 - Built the full app per brief: Next.js App Router + TS + Tailwind, single `/api/untangle` route calling OpenRouter, tone picker (Direct / Diplomatic / Buy Time), editable reply with Copy button.
 - Server-side thread cleaning in `lib/clean-thread.ts`: strips `>` quoted lines, "On … wrote:" attributions, forwarded-message markers, Sent/Date/Subject headers. Keeps From/To/Cc lines (they identify participants in Outlook-style chains). **Fallback:** if aggressive stripping would gut the paste (single-email paste whose history lives entirely in quotes), it keeps quoted content and only sheds the `> ` gutters.
